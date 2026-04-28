@@ -1,0 +1,44 @@
+#start instances
+
+import boto3
+
+def lambda_handler(event, context):
+    ec2 = boto3.client('ec2')
+    
+    instance_id = 'i-040a41581a179ed31'  # replace with your instance ID
+    
+    response = ec2.start_instances(
+        InstanceIds=[instance_id]
+    )
+    
+    return {
+        'statusCode': 200,
+        'body': f'Starting instance {instance_id}',
+        'response': response
+    }
+
+
+#stop Instances
+
+import boto3
+
+def lambda_handler(event, context):
+    ec2 = boto3.client('ec2')
+    
+    instance_id = 'i-040a41581a179ed31'  # replace with your instance ID
+    
+    response = ec2.stop_instances(
+        InstanceIds=[instance_id]
+    )
+    
+    return {
+        'statusCode': 200,
+        'body': f'Stopping instance {instance_id}',
+        'response': response
+    }
+
+
+
+
+
+
